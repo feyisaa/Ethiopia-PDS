@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html th:replace="~{layout/popup :: layout(_,_,~{::scripts},~{::content})}">
+<content>
+	<form action="#" th:action="@{/survey/tool}" th:object="${selected}" method="POST" class="needs-validation"
+		novalidate>
+
+		<div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+
+		<div class="card text-white mb-3" style="background-color: rgb(49, 92, 128);">
+			<div class="card-header border-bottom display-6">
+				Survey tool
+			</div>
+
+			<div class="card-body" style="background-color: rgb(49, 92, 128);">
+				<div hidden>
+					<input th:field="*{survey_id}" readonly />
+					<input th:field="*{entry_date}" readonly />
+					<input th:field="*{survey_author}" readonly />
+				</div>
+				<div class="row mb-3">
+					<div class="col-auto">
+						<label class="form-label fw-bold" th:text="#{prev_survey_date}"></label>
+						<input class="form-control" type="date" th:field="*{prev_survey_date}"
+							th:disabled="${selected.survey_completed}" required />
+					</div>
+					<div class="col-auto">
+						<label class="form-label fw-bold" th:text="#{survey_date}"></label>
+						<input class="form-control" type="date" th:field="*{survey_date}"
+							th:disabled="${selected.survey_completed}" required />
+					</div>
+
+				</div>
+				<div class="row mb-5">
+					<div class="col-row">
+						<label class="form-label fw-bold" th:text="#{survey_team}"></label>
+						<textarea rows="8" class="form-control" th:field="*{survey_team}"></textarea>
+					</div>
+				</div>
+
+				<div class="mb-5 display-6">
+					<b>Instructions: </b>Select &QUOT;Yes&QUOT; only if the specified criteria are met based on
+					available evidence (documents, records). Select &QUOT;No&QUOT; if criteria are not met or evidence
+					is unavailable.
+				</div>
+
+
+				<div class="fw-bold border-bottom mt-5 mb-3">
+					Category 1: Leadership &amp; Accountability
+				</div>
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{lead_coordinator_q}]]
+						<div class="inline text-warning" th:text="#{lead_coordinator_g}"></div>
+					</label>
+
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{lead_coordinator}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{lead_coordinator}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{lead_coordinator_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{lead_engagement_q}]]
+						<div class="inline text-warning" th:text="#{lead_engagement_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{lead_engagement}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{lead_engagement}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{lead_engagement_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{lead_supervision_q}]]
+						<div class="inline text-warning" th:text="#{lead_supervision_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{lead_supervision}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{lead_supervision}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{lead_supervision_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="toggle-btn mb-2 bg-warning" data-target="#guide_sup">
+					Click here to read / hide additional guide
+				</button>
+
+				<div id="guide_sup" style="display:none;">
+					<div class="inline text-warning" th:utext="#{lead_supervision_sg}"></div>
+				</div>
+				
+				
+				
+
+				<div class="fw-bold border-bottom mt-5 mb-3">
+					Category 2: Policy & Guidelines
+				</div>
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{policy_guidlines_q}]]
+						<div class="inline text-warning" th:utext="#{policy_guidlines_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{policy_guidlines}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{policy_guidlines}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{policy_guidlines_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="toggle-btn mb-2 bg-warning" data-target="#guide_pol">
+					Click here to read / hide additional guide
+				</button>
+				<div id="guide_pol" style="display:none;">
+					<div class="inline text-warning" th:utext="#{policy_guidlines_sg}"></div>
+				</div>
+				
+
+				<div class="fw-bold border-bottom mt-5 mb-3">
+					Category 3: Structure & Coordination
+				</div>
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{struct_mat_committee_q}]]
+						<div class="inline text-warning" th:text="#{struct_mat_committee_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{struct_mat_committee}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{struct_mat_committee}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{struct_mat_committee_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{struct_peri_committee_q}]]
+						<div class="inline text-warning" th:text="#{struct_peri_committee_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1"
+								th:field="*{struct_peri_committee}" required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0"
+								th:field="*{struct_peri_committee}" required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{struct_peri_committee_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{struct_multi_committee_q}]]
+						<div class="inline text-warning" th:text="#{struct_multi_committee_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1"
+								th:field="*{struct_multi_committee}" required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0"
+								th:field="*{struct_multi_committee}" required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{struct_multi_committee_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{struct_formal_committee_q}]]
+						<div class="inline text-warning" th:text="#{struct_formal_committee_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1"
+								th:field="*{struct_formal_committee}" required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0"
+								th:field="*{struct_formal_committee}" required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{struct_formal_committee_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="fw-bold border-bottom mt-5 mb-3">
+					Category 4: Review Meetings
+				</div>
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{meet_exists_q}]]
+						<div class="inline text-warning" th:text="#{meet_exists_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{meet_exists}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{meet_exists}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{meet_exists_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{meet_routine_q}]]
+						<div class="inline text-warning" th:text="#{meet_routine_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{meet_routine}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{meet_routine}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{meet_routine_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="fw-bold border-bottom mt-5 mb-3">
+					Category 5: Tools
+				</div>
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{tools_mat_available_q}]]
+						<div class="inline text-warning" th:text="#{tools_mat_available_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{tools_mat_available}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{tools_mat_available}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{tools_mat_available_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{tools_mat_used_q}]]
+						<div class="inline text-warning" th:text="#{tools_mat_used_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{tools_mat_used}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{tools_mat_used}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="-1" th:field="*{tools_mat_used}"
+								required />
+							<label class="form-check-label" th:text="#{text_na_mat}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{tools_mat_used_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{tools_mat_correctly_q}]]
+						<div class="inline text-warning" th:text="#{tools_mat_correctly_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{tools_mat_correctly}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{tools_mat_correctly}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="-1" th:field="*{tools_mat_correctly}"
+								required />
+							<label class="form-check-label" th:text="#{text_na_mat}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{tools_mat_correctly_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{tools_peri_available_q}]]
+						<div class="inline text-warning" th:text="#{tools_peri_available_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{tools_peri_available}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{tools_peri_available}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{tools_peri_available_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{tools_peri_used_q}]]
+						<div class="inline text-warning" th:text="#{tools_peri_used_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{tools_peri_used}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{tools_peri_used}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="-1" th:field="*{tools_peri_used}"
+								required />
+							<label class="form-check-label" th:text="#{text_na_peri}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{tools_peri_used_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{tools_peri_correctly_q}]]
+						<div class="inline text-warning" th:text="#{tools_peri_correctly_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{tools_peri_correctly}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{tools_peri_correctly}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="-1" th:field="*{tools_peri_correctly}"
+								required />
+							<label class="form-check-label" th:text="#{text_na_peri}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{tools_peri_correctly_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="fw-bold border-bottom mt-5 mb-3">
+					Category 6: Training & Staff Capacity
+				</div>
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{train_any_done_q}]]
+						<div class="inline text-warning" th:text="#{train_any_done_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{train_any_done}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{train_any_done}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{train_any_done_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{train_recent_done_q}]]
+						<div class="inline text-warning" th:text="#{train_recent_done_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{train_recent_done}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{train_recent_done}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{train_recent_done_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{train_embed_work_q}]]
+						<div class="inline text-warning" th:text="#{train_embed_work_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{train_embed_work}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{train_embed_work}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{train_embed_work_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="fw-bold border-bottom mt-5 mb-3">
+					Category 7: Resources
+				</div>
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{res_processes_q}]]
+						<div class="inline text-warning" th:text="#{res_processes_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{res_processes}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{res_processes}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{res_processes_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{res_mobilisation_q}]]
+						<div class="inline text-warning" th:text="#{res_mobilisation_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{res_mobilisation}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{res_mobilisation}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{res_mobilisation_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{res_expenditure_q}]]
+						<div class="inline text-warning" th:text="#{res_expenditure_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{res_expenditure}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{res_expenditure}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{res_expenditure_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="fw-bold border-bottom mt-5 mb-3">
+					Category 8: Community Engagement
+				</div>
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{community_structure_q}]]
+						<div class="inline text-warning" th:text="#{community_structure_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{community_structure}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{community_structure}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{community_structure_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{community_feedback_q}]]
+						<div class="inline text-warning" th:utext="#{community_feedback_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{community_feedback}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{community_feedback}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{community_feedback_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+				<button type="button" class="toggle-btn mb-2 bg-warning" data-target="#guide_cmf">
+					Click here to read / hide additional guide
+				</button>
+				<div id="guide_cmf" style="display:none;">
+					<div class="inline text-warning" th:utext="#{community_feedback_sg}"></div>
+				</div>
+
+
+				<div class="fw-bold border-bottom mt-5 mb-3">
+					Category 9: Implementation Culture
+				</div>
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{impl_reinforcement_q}]]
+						<div class="inline text-warning" th:text="#{impl_reinforcement_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{impl_reinforcement}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{impl_reinforcement}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{impl_reinforcement_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{impl_confidentiality_q}]]
+						<div class="inline text-warning" th:text="#{impl_confidentiality_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{impl_confidentiality}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{impl_confidentiality}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{impl_confidentiality_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{impl_participation_q}]]
+						<div class="inline text-warning" th:text="#{impl_participation_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{impl_participation}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{impl_participation}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="-1" th:field="*{impl_participation}"
+								required />
+							<label class="form-check-label" th:text="#{text_na_train}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{impl_participation_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="fw-bold border-bottom mt-5 mb-3">
+					Category 10: Tracking Response
+				</div>
+				<div class="col-row mb-3">
+					<label class="form-label">[(#{track_rec_low_q})]
+						<div class="inline text-warning" th:utext="#{track_rec_low_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{track_rec_low}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{track_rec_low}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{track_rec_low_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-row mb-3">
+					<label class="form-label">[(#{track_rec_mid_q})]
+						<div class="inline text-warning" th:utext="#{track_rec_mid_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{track_rec_mid}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{track_rec_mid}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{track_rec_mid_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-row mb-3">
+					<label class="form-label">[(#{track_rec_high_q})]
+						<div class="inline text-warning" th:utext="#{track_rec_high_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="1" th:field="*{track_rec_high}"
+								required />
+							<label class="form-check-label" th:text="#{text_yes}"></label>
+						</div>
+						<div class="col-auto">
+							<input class="form-check-input" type="radio" th:value="0" th:field="*{track_rec_high}"
+								required />
+							<label class="form-check-label" th:text="#{text_no}"></label>
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{track_rec_high_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="fw-bold border-bottom mt-5 mb-3">
+					Additional questions: Number of deaths reported
+				</div>
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{dhis2_maternal_death_count_q}]]
+						<div class="inline text-warning" th:text="#{dhis2_maternal_death_count_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-row">
+							<input class="form-control" type="number" th:field="*{dhis2_maternal_death_count}"
+								required />
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{dhis2_maternal_death_count_txt}"></textarea>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="col-row mb-3">
+					<label class="form-label">[[#{dhis2_perinatal_death_count_q}]]
+						<div class="inline text-warning" th:text="#{dhis2_perinatal_death_count_g}"></div>
+					</label>
+					<div class="row fw-bold">
+						<div class="col-row">
+							<input class="form-control" type="number" th:field="*{dhis2_perinatal_death_count}"
+								required />
+						</div>
+						<div class="col-row mt-2">
+							<label class="form-label fw-normal" th:text="#{comments}"></label>
+							<textarea class="form-control" th:field="*{dhis2_perinatal_death_count_txt}"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="row mb-3">
+					<div class="col-auto">
+						<label class="form-label fw-bold" th:text="#{time_spent_collect}"></label>
+						<input class="form-control" type="number" th:field="*{time_spent_collect}"
+							th:disabled="${selected.survey_completed}" required />
+					</div>
+					<div class="col-auto">
+						<label class="form-label fw-bold" th:text="#{time_spent_score}"></label>
+						<input class="form-control" type="number" th:field="*{time_spent_score}"
+							th:disabled="${selected.survey_completed}" required />
+					</div>
+					<div class="col-auto">
+						<label class="form-label fw-bold" th:text="#{time_spent_validate}"></label>
+						<input class="form-control" type="number" th:field="*{time_spent_validate}"
+							th:disabled="${selected.survey_completed}" required />
+					</div>
+
+				</div>
+				
+				<div class="col-row mb-3" th:if="${reviewing}">
+					<hr>
+					<label class="form-label" th:text="#{review_completed}"></label>
+					<div class="row fw-bold">
+						<div class="col-auto">
+							<input class="form-check-input" type="checkbox" th:value="1" th:field="*{survey_completed}"
+								th:disabled="${selected.survey_completed}" />
+							<label class="form-check-label" th:text="#{confirm_box}"></label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row mb-5" th:unless="${selected.survey_completed}">
+			<div class="col d-flex justify-content-center">
+				<button type="submit" class="btn btn-primary btn-lg">Save Changes</button>
+			</div>
+		</div>
+
+	</form>
+</content>
+<scripts>
+	<script>
+		$(document).on('click', '.toggle-btn', function () {
+
+			const button = $(this);
+			const target = $(button.data('target'));
+
+			target.stop(true, true).slideToggle(300);
+
+		});
+	</script>
+	<script>
+		$(document).on('keydown', 'input[type=radio]', function (e) {
+
+		    // Left, Up, Right, Down arrow keys
+		    const blockedKeys = [37, 38, 39, 40];
+
+		    if (blockedKeys.includes(e.which)) {
+		        e.preventDefault();
+		    }
+
+		});
+	</script>
+</scripts>
+
+</html>

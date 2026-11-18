@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#ffffff"/>
+  <text x="30" y="45" font-family="Arial, sans-serif" font-size="28" fill="#111">Auditing Workspace (Mock)</text>
+
+  <text x="30" y="90" font-family="Arial, sans-serif" font-size="20" fill="#111">New Cases for Audit</text>
+  <rect x="30" y="100" width="1140" height="130" fill="#fff" stroke="#ced4da"/>
+  <rect x="30" y="100" width="1140" height="35" fill="#212529"/>
+  <text x="45" y="123" font-family="Arial, sans-serif" font-size="14" fill="#fff">Action | Case Type | Date Entered</text>
+  <rect x="40" y="145" width="1120" height="75" fill="#f8d7da" stroke="#e6b8bd"/>
+  <rect x="55" y="165" width="70" height="28" rx="4" fill="#0d6efd"/>
+  <text x="74" y="184" font-family="Arial, sans-serif" font-size="13" fill="#fff">Audit</text>
+  <text x="150" y="184" font-family="Arial, sans-serif" font-size="15" fill="#111">Neonatal death</text>
+  <text x="330" y="184" font-family="Arial, sans-serif" font-size="15" fill="#111">2026-02-10</text>
+
+  <text x="30" y="280" font-family="Arial, sans-serif" font-size="20" fill="#111">Cases Ready for Recommendations</text>
+  <rect x="30" y="290" width="1140" height="140" fill="#fff" stroke="#ced4da"/>
+  <rect x="30" y="290" width="1140" height="35" fill="#f8f9fa"/>
+  <text x="45" y="313" font-family="Arial, sans-serif" font-size="14" fill="#111">Action | Death Type | ICD-PM | Delay 1 | Delay 2</text>
+  <rect x="40" y="335" width="1120" height="85" fill="#fff3cd" stroke="#f0df9a"/>
+  <rect x="55" y="360" width="130" height="30" rx="4" fill="#dc3545"/>
+  <text x="73" y="380" font-family="Arial, sans-serif" font-size="13" fill="#fff">Recommendation</text>
+  <text x="210" y="380" font-family="Arial, sans-serif" font-size="15" fill="#111">Maternal death</text>
+  <text x="360" y="380" font-family="Arial, sans-serif" font-size="15" fill="#111">M5</text>
+  <text x="430" y="380" font-family="Arial, sans-serif" font-size="15" fill="#111">Yes</text>
+  <text x="500" y="380" font-family="Arial, sans-serif" font-size="15" fill="#111">No</text>
+
+  <text x="30" y="480" font-family="Arial, sans-serif" font-size="20" fill="#111">Recommendation Tracking</text>
+  <rect x="30" y="490" width="1140" height="230" fill="#fff" stroke="#ced4da"/>
+  <rect x="30" y="490" width="1140" height="35" fill="#212529"/>
+  <text x="45" y="513" font-family="Arial, sans-serif" font-size="14" fill="#fff">Date | Task | Lead | Deadline | Status | Action</text>
+  <rect x="40" y="535" width="1120" height="75" fill="#d1e7dd" stroke="#a8d5c2"/>
+  <text x="55" y="565" font-family="Arial, sans-serif" font-size="14" fill="#111">07-Feb-2026 | Improve triage protocol | QI Lead | 15-Feb-2026 | Completed</text>
+  <rect x="940" y="545" width="150" height="30" rx="4" fill="#0d6efd"/><text x="965" y="565" font-family="Arial" font-size="13" fill="#fff">Change status</text>
+  <rect x="40" y="620" width="1120" height="75" fill="#f8d7da" stroke="#e6b8bd"/>
+  <text x="55" y="650" font-family="Arial, sans-serif" font-size="14" fill="#111">03-Feb-2026 | Night shift escalation training | Nursing Head | 12-Feb-2026 | Overdue</text>
+  <rect x="940" y="630" width="150" height="30" rx="4" fill="#0d6efd"/><text x="965" y="650" font-family="Arial" font-size="13" fill="#fff">Change status</text>
+</svg>
+

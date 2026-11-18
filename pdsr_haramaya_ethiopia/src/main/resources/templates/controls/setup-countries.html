@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html th:replace="~{layout/controls :: layout(_,~{},~{},~{::content},~{})}">
+
+<content>
+	<div class="col-md-12 py-3 my-3 mx-auto rounded box-shadow">
+
+		<h1>[[${selected.facility_name}]]</h1>
+		<form action="#" th:action="@{/controls/countries}" th:object="${selected}" method="POST"
+			class="needs-validation" novalidate>
+			<button class="btn btn-primary btn-lg" type="submit">Upload Facilities</button>
+		</form>
+		<table class="table table-light table-responsive-sm">
+			<thead>
+				<tr>
+					<th colspan="2" th:text="#{th.setup_region}"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="region: ${selected.children}">
+					<td> <span
+							class="small text-secondary">[[${region.facility_code}]]-</span>[[${region.facility_name}]]
+					</td>
+					<td>
+						<table class="table table-light table-responsive-sm">
+							<thead>
+								<tr>
+									<th th:text="#{th.setup_district}"></th>
+									<th th:text="#{th.setup_facility}"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="district: ${region.children}">
+									<td> <span
+											class="small text-secondary">[[${district.facility_code}]]-</span>[[${district.facility_name}]]
+									</td>
+									<td>
+										<div th:each="facility: ${district.children}" class="border-bottom">
+											<span
+												class="small text-secondary">[[${facility.facility_code}]]-</span>[[${facility.facility_name}]]
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</content>
+
+</html>

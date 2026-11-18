@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html th:replace="~{layout/survey :: layout(_,~{},_,~{::content},~{})}">
+<content>
+	<div class="table-responsive mt-3">
+		<table class="table table-sm table-bordered border-dark">
+			<thead>
+				<tr>
+					<th class="sticky-left" th:text="#{survey_indicators}"></th>
+					<th th:each="subitem : ${dataset}" style="width: 10%;">
+						<a class="btn btn-lg btn-primary" href="#"
+							th:href="@{/survey/tool?id={id}(id=${subitem[0]})}">[[${subitem[40]}]]</a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td th:colspan="${dataset.size()+1}" class="sticky-left fw-bold"
+						th:utext="|Leadership &frasl; Accountability|"></td>
+				</tr>
+				<tr th:each="item, iterStat : ${indicators}" th:if="${iterStat.index} >= 1 and ${iterStat.index} <= 3">
+					<td class="sticky-left" th:text="|${iterStat.index}. ${item}|"></td>
+					<td th:each="subitem : ${dataset}" class="text-center">
+						<span th:text="${subitem[iterStat.index]}"
+							th:class="${subitem[iterStat.index]}=='1'?'badge bg-success':'badge bg-danger'"></span>
+					</td>
+				</tr>
+				<tr>
+					<td th:colspan="${dataset.size()+1}" class="sticky-left fw-bold"
+						th:utext="|Policy &frasl; Guidelines|"></td>
+				</tr>
+				<tr th:each="item, iterStat : ${indicators}" th:if="${iterStat.index} >= 4 and ${iterStat.index} <= 4">
+					<td class="sticky-left" th:text="|${iterStat.index}. ${item}|"></td>
+					<td th:each="subitem : ${dataset}" class="text-center">
+						<span th:text="${subitem[iterStat.index]}"
+							th:class="${subitem[iterStat.index]}=='1'?'badge bg-success':'badge bg-danger'"></span>
+					</td>
+				</tr>
+				<tr>
+					<td th:colspan="${dataset.size()+1}" class="sticky-left fw-bold"
+						th:utext="|Structure &frasl; Coordination|"></td>
+				</tr>
+				<tr th:each="item, iterStat : ${indicators}" th:if="${iterStat.index} >= 5 and ${iterStat.index} <= 8">
+					<td class="sticky-left" th:text="|${iterStat.index}. ${item}|"></td>
+					<td th:each="subitem : ${dataset}" class="text-center">
+						<span th:text="${subitem[iterStat.index]}"
+							th:class="${subitem[iterStat.index]}=='1'?'badge bg-success':'badge bg-danger'"></span>
+					</td>
+				</tr>
+				<tr>
+					<td th:colspan="${dataset.size()+1}" class="sticky-left fw-bold" th:utext="|Review Meetings|"></td>
+				</tr>
+				<tr th:each="item, iterStat : ${indicators}" th:if="${iterStat.index} >= 9 and ${iterStat.index} <= 10">
+					<td class="sticky-left" th:text="|${iterStat.index}. ${item}|"></td>
+					<td th:each="subitem : ${dataset}" class="text-center">
+						<span th:text="${subitem[iterStat.index]}"
+							th:class="${subitem[iterStat.index]}=='1'?'badge bg-success':'badge bg-danger'"></span>
+					</td>
+				</tr>
+				<tr>
+					<td th:colspan="${dataset.size()+1}" class="sticky-left fw-bold" th:utext="|Tools|"></td>
+				</tr>
+				<tr th:each="item, iterStat : ${indicators}"
+					th:if="${iterStat.index} >= 11 and ${iterStat.index} <= 16">
+					<td class="sticky-left" th:text="|${iterStat.index}. ${item}|"></td>
+					<td th:each="subitem : ${dataset}" class="text-center">
+						<span th:unless="${subitem[iterStat.index]} eq 'n/a'" th:text="${subitem[iterStat.index]}"
+							th:class="${subitem[iterStat.index]}=='1'?'badge bg-success':'badge bg-danger'"></span>
+						<span th:if="${subitem[iterStat.index]} eq 'n/a'" th:text="${subitem[iterStat.index]}"
+							class="badge bg-light text-secondary"></span>
+					</td>
+				</tr>
+				<tr>
+					<td th:colspan="${dataset.size()+1}" class="sticky-left fw-bold"
+						th:utext="|Training &frasl; Staff Capacity|"></td>
+				</tr>
+				<tr th:each="item, iterStat : ${indicators}"
+					th:if="${iterStat.index} >= 17 and ${iterStat.index} <= 19">
+					<td class="sticky-left" th:text="|${iterStat.index}. ${item}|"></td>
+					<td th:each="subitem : ${dataset}" class="text-center">
+						<span th:text="${subitem[iterStat.index]}"
+							th:class="${subitem[iterStat.index]}=='1'?'badge bg-success':'badge bg-danger'"></span>
+					</td>
+				</tr>
+				<tr>
+					<td th:colspan="${dataset.size()+1}" class="sticky-left fw-bold" th:utext="|Resources|"></td>
+				</tr>
+				<tr th:each="item, iterStat : ${indicators}"
+					th:if="${iterStat.index} >= 20 and ${iterStat.index} <= 22">
+					<td class="sticky-left" th:text="|${iterStat.index}. ${item}|"></td>
+					<td th:each="subitem : ${dataset}" class="text-center">
+						<span th:text="${subitem[iterStat.index]}"
+							th:class="${subitem[iterStat.index]}=='1'?'badge bg-success':'badge bg-danger'"></span>
+					</td>
+				</tr>
+				<tr>
+					<td th:colspan="${dataset.size()+1}" class="sticky-left fw-bold" th:utext="|Community|"></td>
+				</tr>
+				<tr th:each="item, iterStat : ${indicators}"
+					th:if="${iterStat.index} >= 23 and ${iterStat.index} <= 24">
+					<td class="sticky-left" th:text="|${iterStat.index}. ${item}|"></td>
+					<td th:each="subitem : ${dataset}" class="text-center">
+						<span th:text="${subitem[iterStat.index]}"
+							th:class="${subitem[iterStat.index]}=='1'?'badge bg-success':'badge bg-danger'"></span>
+					</td>
+				</tr>
+				<tr>
+					<td th:colspan="${dataset.size()+1}" class="sticky-left fw-bold"
+						th:utext="|Implementation Culture|">
+					</td>
+				</tr>
+				<tr th:each="item, iterStat : ${indicators}"
+					th:if="${iterStat.index} >= 25 and ${iterStat.index} <= 27">
+					<td class="sticky-left" th:text="|${iterStat.index}. ${item}|"></td>
+					<td th:each="subitem : ${dataset}" class="text-center">
+						<span th:unless="${subitem[iterStat.index]} eq 'n/a'" th:text="${subitem[iterStat.index]}"
+							th:class="${subitem[iterStat.index]}=='1'?'badge bg-success':'badge bg-danger'"></span>
+						<span th:if="${subitem[iterStat.index]} eq 'n/a'" th:text="${subitem[iterStat.index]}"
+							class="badge bg-light text-secondary"></span>
+					</td>
+				</tr>
+				<tr>
+					<td th:colspan="${dataset.size()+1}" class="sticky-left fw-bold" th:utext="|Tracking Response|">
+					</td>
+				</tr>
+				<tr th:each="item, iterStat : ${indicators}"
+					th:if="${iterStat.index} >= 28 and ${iterStat.index} <= 30">
+					<td class="sticky-left" th:text="|${iterStat.index}. ${item}|"></td>
+					<td th:each="subitem : ${dataset}" class="text-center">
+						<span th:text="${subitem[iterStat.index]}"
+							th:class="${subitem[iterStat.index]}=='1'?'badge bg-success':'badge bg-danger'"></span>
+					</td>
+				</tr>
+				<tr>
+					<th class="sticky-left" th:colspan="${dataset.size()+1}">&nbsp;</th>
+				</tr>
+				<tr th:each="item, iterStat : ${indicators}" th:if="${iterStat.index} == 31">
+					<th class="sticky-left" th:text="${item}"></th>
+					<th th:each="subitem : ${dataset}" class="text-center" th:text="${subitem[iterStat.index]}"></th>
+				</tr>
+				<tr th:each="item, iterStat : ${indicators}" th:if="${iterStat.index} == 32">
+					<th class="sticky-left" th:text="${item}"></th>
+					<th th:each="subitem : ${dataset}" class="text-center" th:text="${subitem[iterStat.index]}"></th>
+				</tr>
+				<tr th:each="item, iterStat : ${indicators}" th:if="${iterStat.index} == 33">
+					<th class="sticky-left" th:text="${item}"></th>
+					<th th:each="subitem : ${dataset}" class="text-center" th:text="${subitem[iterStat.index]}"></th>
+				</tr>
+				<tr>
+					<th class="sticky-left" th:colspan="${dataset.size()+1}">&nbsp;</th>
+				</tr>
+				<tr>
+					<th class="sticky-left" th:colspan="${dataset.size()+1}" th:text="|Output Indicators|"></th>
+				</tr>
+				<tr th:each="item, iterStat : ${indicators}"
+					th:if="${iterStat.index} >= 34 and ${iterStat.index} <= 39">
+					<td class="sticky-left small" th:text="${item}"></td>
+					<td th:each="subitem : ${dataset}" class="text-center" th:text="${subitem[iterStat.index]}"></td>
+				</tr>
+				<tr>
+					<th class="sticky-left" th:colspan="${dataset.size()+1}" th:text="|Survey details|"></th>
+				</tr>
+				<tr th:each="item, iterStat : ${indicators}" th:if="${iterStat.index} >= 40">
+					<td class="sticky-left text-muted small" th:text="${item}"></td>
+					<td th:each="subitem : ${dataset}" class="text-center text-muted"
+						th:text="${subitem[iterStat.index]}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script>
+		function myPopFunction(button, url) {
+			let params = `popup=true,left=-1000,top=-1000`;
+			var id = $(button).attr('data-id');
+			if (id != null) {
+				window.open(url + '?id=' + id, '_blank', params);
+			} else {
+				window.open(url, '_blank', params);
+			}
+		}
+	</script>
+</content>
+
+</html>

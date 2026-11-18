@@ -1,0 +1,19 @@
+﻿id,facility_code,facility_name,facility_type,parent_code
+1,OroRg,Oromia Region,1,EMPDSR
+2,HarRg,Harari Region,1,EMPDSR
+3,KerDr,Kersa District,2,OroRg
+4,BabDr,Babile District,2,OroRg
+5,HrDr,Haramaya District,2,OroRg
+6,HarTw,Harari Town,2,HarRg
+7,BAwuHC,Awusherif Health Center,3,BabDr
+8,BEreHC,Erer Health Center,3,BabDr
+9,BWayHC,Wayu Health Center,3,BabDr
+10,KKerHC,Kersa Health Center,3,KerDr
+11,KLanHC,Lange Health Center,3,KerDr
+12,KWatHC,Water Health Center,3,KerDr
+13,HHarGH,Haramaya General Hospital,3,HrDr
+14,HAwaHC,Awaday Health Center ,3,HrDr
+15,HAwuHC,Awumara Health Center,3,HrDr
+16,HFinHC,Finkile Health Center,3,HrDr
+17,HHiwSH,Hiwot Fana Specialized Comprehensive Hospital ,3,HarTw
+18,HJugGH,Jugol General Hospital,3,HarTw

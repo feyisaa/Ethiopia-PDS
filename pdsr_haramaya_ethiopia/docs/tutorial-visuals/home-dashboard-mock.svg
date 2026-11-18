@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <rect width="1200" height="700" fill="#396a93"/>
+  <rect x="30" y="30" width="1140" height="640" rx="12" fill="#ffffff"/>
+  <text x="60" y="75" font-family="Arial, sans-serif" font-size="28" fill="#111">Home Dashboard (Mock)</text>
+  <rect x="60" y="100" width="530" height="250" rx="8" fill="#315c80"/>
+  <text x="85" y="135" font-family="Arial, sans-serif" font-size="22" fill="#fff">Overall Totals</text>
+  <text x="85" y="175" font-family="Arial, sans-serif" font-size="18" fill="#fff">Total births: 3,821</text>
+  <text x="85" y="205" font-family="Arial, sans-serif" font-size="18" fill="#fff">Live births: 3,755</text>
+  <text x="85" y="235" font-family="Arial, sans-serif" font-size="18" fill="#fff">Perinatal deaths: 91</text>
+  <text x="85" y="265" font-family="Arial, sans-serif" font-size="18" fill="#fff">Neonatal deaths: 53</text>
+  <text x="85" y="295" font-family="Arial, sans-serif" font-size="18" fill="#fff">Stillbirths: 38</text>
+  <text x="85" y="325" font-family="Arial, sans-serif" font-size="18" fill="#fff">Maternal deaths: 9</text>
+  <rect x="620" y="100" width="520" height="250" rx="8" fill="#e9f4ff" stroke="#9ec7ec"/>
+  <text x="645" y="135" font-family="Arial, sans-serif" font-size="22" fill="#111">Case Pipeline (Current Year)</text>
+  <text x="645" y="180" font-family="Arial, sans-serif" font-size="18" fill="#111">Entered: 224</text>
+  <text x="645" y="210" font-family="Arial, sans-serif" font-size="18" fill="#111">Submitted: 198 (88.4%)</text>
+  <text x="645" y="240" font-family="Arial, sans-serif" font-size="18" fill="#111">Selected for audit: 84</text>
+  <text x="645" y="270" font-family="Arial, sans-serif" font-size="18" fill="#111">Reviewed: 62 (73.8%)</text>
+  <rect x="60" y="385" width="1080" height="250" rx="8" fill="#f8f9fa" stroke="#d0d4d8"/>
+  <text x="85" y="425" font-family="Arial, sans-serif" font-size="22" fill="#111">Recommendations Snapshot</text>
+  <rect x="85" y="450" width="320" height="70" rx="8" fill="#198754"/>
+  <text x="110" y="492" font-family="Arial, sans-serif" font-size="24" fill="#fff">Completed: 47</text>
+  <rect x="440" y="450" width="320" height="70" rx="8" fill="#ffc107"/>
+  <text x="465" y="492" font-family="Arial, sans-serif" font-size="24" fill="#111">Pending: 19</text>
+  <rect x="795" y="450" width="320" height="70" rx="8" fill="#dc3545"/>
+  <text x="820" y="492" font-family="Arial, sans-serif" font-size="24" fill="#fff">Overdue: 8</text>
+</svg>
+
